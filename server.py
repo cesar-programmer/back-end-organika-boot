@@ -1,26 +1,21 @@
 from flask import Flask
 import json
+from data import catalog
 
 app = Flask(__name__)
 
-@app.get('/')
+
+@app.get("/")
 def home():
-    return 'Hello, World!'
+    return "Hello from server"
 
-@app.get('/test')
+
+@app.get("/test")
 def test():
-    return 'this is a test'
+    return "This is another page"
 
-
-# // this will be the endpoints of the server
-
-@app.get('/api/v1/about')
-def about():
-    me = {
-        "name": "cesar",
-        "age": 21,
-        "hobbies": ["coding", "gaming", "listen to music"]
-    }
-    return json.dumps(me)
+@app.get("/api/products")
+def get_products():
+    return json.dumps(catalog)
 
 app.run(debug=True)
