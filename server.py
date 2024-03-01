@@ -1,8 +1,10 @@
 from flask import Flask
+from flask_cors import CORS
 import json
 from data import catalog
 
 app = Flask(__name__)
+CORS(app)
 
 
 @app.get("/")
